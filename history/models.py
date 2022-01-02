@@ -6,7 +6,7 @@ from django.db import models
 from account.models import Profile
 
 
-class Notes(models.Model):
+class Note(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     date = models.DateField(default="2020-1-1")
     earn = models.PositiveIntegerField(default=0)

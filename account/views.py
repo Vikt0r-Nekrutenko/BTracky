@@ -25,8 +25,7 @@ class UserRegistrationForm(forms.ModelForm):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dash.html')
-#    return render(request, 'dashboard.html', {'user': request.user})
+    return render(request, 'dashboard.html', {'user': request.user})
 
 
 def register(request):
