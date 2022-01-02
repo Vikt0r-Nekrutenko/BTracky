@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 
 from analysis.models import Notes
 
 
-def index(self):
-    note = Notes.objects.all()
-    return HttpResponse(note[0].profile.user.username)
+@login_required
+def index(request):
+    return render(request, 'index.html', {'profile': request.user.profile})

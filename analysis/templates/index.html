@@ -5,6 +5,16 @@
     <title>Analysis</title>
 </head>
 <body>
-    
+    <table border="1">
+    {% for note in profile.notes_set.all %}
+        <tr>
+            <td>{{ note.earn }}</td>
+            <td>{{ note.date }}</td>
+            <td>{{ note.bank }}</td>
+            <td>{{ note.deposit }}</td>
+            <td>{{ note.comment }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 </body>
 </html>
