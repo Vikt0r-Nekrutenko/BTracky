@@ -18,8 +18,11 @@ def index(request):
                          deposit=new_note.cleaned_data['deposit'],
                          comment=new_note.cleaned_data['comment'])
 
-            note.save()
+            request.user.profile.hold += note.bank
+            request.user.profile.earned += note.earn
 
+            note.save()
+        return render(request, 'dashboard.html', {'user': request.user})
     else:
         new_note = AddNoteForm()
 
