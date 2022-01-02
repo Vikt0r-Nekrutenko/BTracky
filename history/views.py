@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
 from history.forms import AddNoteForm
 from history.models import Notes
 
@@ -26,3 +25,10 @@ def index(request):
 
     return render(request, 'index.html', {'form': new_note,
                                           'profile': request.user.profile})
+
+
+@login_required
+def remove(request, part_id=None):
+    obj = Notes.objects.filter(id=part_id)
+    obj.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
