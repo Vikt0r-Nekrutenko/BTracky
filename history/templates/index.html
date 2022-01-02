@@ -6,12 +6,25 @@
         <input type="submit" value="Sign-In" />
     </form>
     <table border="1">
+    <tr>
+        <td>Date</td>
+        <td>Earn</td>
+        <td>Bank</td>
+        <td>Deposit</td>
+        <td>Total</td>
+        <td>Daily difference</td>
+        <td>Difference</td>
+        <td>Comment</td>
+    </tr>
     {% for note in profile.notes_set.all %}
         <tr>
             <td>{{ note.date }}</td>
             <td>{{ note.earn }}</td>
             <td>{{ note.bank }}</td>
             <td>{{ note.deposit }}</td>
+            <td>{{ note.total }}</td>
+            <td>{{ note.daily_diff }}</td>
+            <td>{{ note.diff }}</td>
             <td>{{ note.comment }}</td>
             <td><a href={{note.id}}>DEL</a></td>
         </tr>

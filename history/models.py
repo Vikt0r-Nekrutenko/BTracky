@@ -12,4 +12,7 @@ class Notes(models.Model):
     earn = models.PositiveIntegerField(default=0)
     bank = models.IntegerField(default=0)
     deposit = models.PositiveIntegerField(default=0)
+    total = models.IntegerField(default=0)
+    daily_diff = models.IntegerField(default=0)
+    diff = models.IntegerField(default=0)
     comment = models.CharField(max_length=255)
