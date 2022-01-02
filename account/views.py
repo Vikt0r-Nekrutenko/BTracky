@@ -1,10 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from account.models import Profile
-from django.contrib.auth import views as auth_views
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -38,7 +35,7 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             #new_user.save()
             #Profile.objects.create(user=new_user)
-            return render(request, 'registration/registration_done.html')
+            return render(request, 'registration/registration_done.html', {'username': new_user.username})
 
     else:
         user_form = UserRegistrationForm()
