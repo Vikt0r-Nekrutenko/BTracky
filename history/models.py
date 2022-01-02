@@ -16,3 +16,6 @@ class Notes(models.Model):
     daily_diff = models.IntegerField(default=0)
     diff = models.IntegerField(default=0)
     comment = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['-date']

@@ -11,8 +11,7 @@ def index(request):
         new_note = AddNoteForm(request.POST)
 
         if new_note.is_valid():
-            request.user.profile.earned += new_note.cleaned_data['earn']
-            request.user.profile.save()
+            request.user.profile.change_earned(new_note.cleaned_data['earn'])
 
             total = new_note.cleaned_data['bank']+new_note.cleaned_data['deposit'];
             daily_diff = 0
@@ -32,9 +31,7 @@ def index(request):
                          comment=new_note.cleaned_data['comment'])
             note.save()
 
-            request.user.profile.hold = request.user.profile.notes_set.last().total
-            request.user.profile.difference = request.user.profile.notes_set.last().diff
-            request.user.profile.save()
+            request.user.profile.change_hold_and_diff()
 
         return render(request, 'dashboard.html', {'user': request.user})
     else:
@@ -47,5 +44,9 @@ def index(request):
 @login_required
 def remove(request, part_id=None):
     note = Notes.objects.filter(id=part_id)
+    if note.count() > 0:
+        request.user.profile.change_earned(-note[0].earn)
     note.delete()
+
+    request.user.profile.change_hold_and_diff()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
