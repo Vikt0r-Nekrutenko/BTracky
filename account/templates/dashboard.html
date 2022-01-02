@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if profile.user.is_autenticated %}
+        <h1>Hello {{ profile.user.username }}</h1>
+    {% else %}
+        <h1>Auth please!</h1>
+    {% endif %}
+</body>
+</html>

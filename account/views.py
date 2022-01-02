@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 
 from account.models import Profile
 
 
-def index(self):
-    p = Profile.objects.all()
-    return HttpResponse(p[0].notes_set.all()[0].comment)
+@login_required
+def dashboard(request):
+    return render(request, 'dashboard.html', {'profile': Profile.objects.all()[0]})
