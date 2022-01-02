@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 
 class UserRegistrationForm(forms.ModelForm):

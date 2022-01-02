@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from analysis.models import Notes
+from history.models import Notes
 
 
 @admin.register(Notes)
