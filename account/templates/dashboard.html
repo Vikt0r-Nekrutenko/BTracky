@@ -5,10 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-    {% if profile.user.is_autenticated %}
-        <h1>Hello {{ profile.user.username }}</h1>
-    {% else %}
-        <h1>Auth please!</h1>
-    {% endif %}
+    {% with profile=user.profile %}
+    <h1>Hello {{ user.username }}</h1>
+        <p>{{ profile.earned }}</p>
+        <p>{{ profile.hold }}</p>
+        <p>{{ profile.difference }}</p>
+        <ul>
+        {% for note in profile.notes_set.all %}
+            <li>{{ note.date }}</li>
+        {% endfor %}
+        </ul>
+    {% endwith %}
+    <a href="{% url 'logout' %}">Log out</a>
 </body>
 </html>
