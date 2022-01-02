@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     {% with profile=user.profile %}
     <h1>Hello {{ user.username }}</h1>
         <p>{{ profile.earned }}</p>
@@ -16,7 +12,4 @@
         {% endfor %}
         </ul>
     {% endwith %}
-    <a href="{% url 'analysis:index'%}">All history</a>
-    <a href="{% url 'logout' %}">Log out</a>
-</body>
-</html>
+{% endblock %}

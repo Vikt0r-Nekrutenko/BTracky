@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <footer>
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'analysis:index' %}">Notes</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </footer>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
