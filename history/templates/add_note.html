@@ -1,4 +1,22 @@
 {% extends 'base.html' %}
+{% block head %}
+    <title>Add note</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#insert_from_last_earn').click(function (e) {
+                $('#id_earn').val(this.value);
+            });
+
+            $('#insert_from_last_bank').click(function (e) {
+                $('#id_bank').val(this.value);
+            });
+
+            $('#insert_from_last_deposit').click(function (e) {
+                $('#id_deposit').val(this.value);
+            });
+        });
+    </script>
+{% endblock %}
 {% block content %}
     <form method="post" action="{% url 'history:add_note' %}">
         <table border="1">
@@ -9,15 +27,15 @@
             </tr>
             <tr>
                 <td>{{ form.earn }}</td>
-                <td>{{ last_note.earn }}</td>
+                <td><input id="insert_from_last_earn" type="button" value="{{ last_note.earn }}" /></td>
             </tr>
             <tr>
                 <td>{{ form.bank }}</td>
-                <td>{{ last_note.bank }}</td>
+                <td><input id="insert_from_last_bank" type="button" value="{{ last_note.bank }}" /></td>
             </tr>
             <tr>
-                <td><a id="last_depo">{{ form.deposit }}</a></td>
-                <td>{{ last_note.deposit }}</td>
+                <td>{{ form.deposit }}</td>
+                <td><input id="insert_from_last_deposit" type="button" value="{{ last_note.deposit }}"/></td>
             </tr>
             <tr>
                 <td>{{ form.comment }}</td>
