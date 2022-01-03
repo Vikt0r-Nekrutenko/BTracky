@@ -18,15 +18,7 @@
                 $('#id_deposit').val(this.value);
             });
             setInterval(function () {
-                const dt = new Date();
                 $('#insert_from_last_date').val(new Date().toISOString());
-/*                $('#insert_from_last_date').val(dt.getFullYear()+'-'+
-                                                dt.getMonth()+'-'+
-                                                dt.getDate()+' '+
-                                                dt.getHours()+':'+
-                                                dt.getMinutes()+':'+
-                                                dt.getSeconds());
- */
             }, 1000);
         });
     </script>

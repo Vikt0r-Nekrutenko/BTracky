@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.forms import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from history.forms import AddNoteForm
@@ -15,8 +16,8 @@ def add_note(request):
             cp = request.user.profile
 
             cp.change_earned(cd['earn'])
-            total = cd['bank'] + cd['deposit'];
-            daily_diff = cp.get_last_total()
+            total = cd['bank'] + cd['deposit']
+            daily_diff = total - cp.get_last_total()
             diff = total - cp.earned
 
             note = Note(profile=cp,
@@ -31,6 +32,8 @@ def add_note(request):
             note.save()
 
             cp.change_hold_and_diff()
+        else:
+            raise forms.ValidationError('Note isn\'t valid!')
     else:
         new_note = AddNoteForm()
 

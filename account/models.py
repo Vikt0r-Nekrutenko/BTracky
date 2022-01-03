@@ -14,8 +14,8 @@ class Profile(models.Model):
 
     def change_hold_and_diff(self):
         if self.note_set.count() > 0:
-            self.hold = self.note_set.last().total
-            self.difference = self.note_set.last().diff
+            self.hold = self.note_set.first().total
+            self.difference = self.hold - self.earned
         else:
             self.hold = 0
             self.difference = 0
@@ -23,5 +23,5 @@ class Profile(models.Model):
 
     def get_last_total(self):
         if self.note_set.count() > 0:
-            return self.note_set.last().total
+            return self.note_set.first().total
         return 0
