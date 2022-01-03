@@ -33,6 +33,7 @@
         <p>{{ profile.hold }}</p>
         <p>{{ profile.difference }}</p>
         <p>{{ profile.note_set.first.daily_diff }}</p>
+        <p>{{ profile.get_pnl_by_period }}</p>
         <p class="percentage">{{ daily_pnl }}</p>
         <p class="percentage">{{ lmi }}</p>
     {% endwith %}
