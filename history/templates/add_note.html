@@ -3,6 +3,9 @@
     <title>Add note</title>
     <script type="text/javascript">
         $(document).ready(function() {
+            $('#insert_from_last_date').click(function (e) {
+                $('#id_date').val(this.value);
+            });
             $('#insert_from_last_earn').click(function (e) {
                 $('#id_earn').val(this.value);
             });
@@ -14,6 +17,17 @@
             $('#insert_from_last_deposit').click(function (e) {
                 $('#id_deposit').val(this.value);
             });
+            setInterval(function () {
+                const dt = new Date();
+                $('#insert_from_last_date').val(new Date().toISOString());
+/*                $('#insert_from_last_date').val(dt.getFullYear()+'-'+
+                                                dt.getMonth()+'-'+
+                                                dt.getDate()+' '+
+                                                dt.getHours()+':'+
+                                                dt.getMinutes()+':'+
+                                                dt.getSeconds());
+ */
+            }, 1000);
         });
     </script>
 {% endblock %}
@@ -23,7 +37,7 @@
             {% csrf_token %}
             <tr>
                 <td>{{ form.date }}</td>
-                <td>{{ last_note.date }}</td>
+                <td><input id="insert_from_last_date" type="button"/></td>
             </tr>
             <tr>
                 <td>{{ form.earn }}</td>
