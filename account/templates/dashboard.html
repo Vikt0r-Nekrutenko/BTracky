@@ -33,8 +33,17 @@
         <p>{{ profile.hold }}</p>
         <p>{{ profile.difference }}</p>
         <p>{{ profile.note_set.first.daily_diff }}</p>
-        <p>{{ profile.get_pnl_by_period }}</p>
-        <p class="percentage">{{ daily_pnl }}</p>
-        <p class="percentage">{{ lmi }}</p>
+
+        <p>today: {{ profile.get_today_pnl }}</p>
+        <p>week: {{ profile.get_week_pnl }}</p>
+        <p>month: {{ profile.get_month_pnl }}</p>
+        <p>(3)month: {{ profile.get_three_month_pnl }}</p>
+        <p>(6)month: {{ profile.get_half_year_pnl }}</p>
+
+        <p class="percentage">today: {{ profile.get_p_today_pnl }}</p>
+        <p class="percentage">week: {{ profile.get_p_week_pnl }}</p>
+        <p class="percentage">month: {{ profile.get_p_month_pnl }}</p>
+        <p class="percentage">(3)month: {{ profile.get_p_three_month_pnl }}</p>
+        <p class="percentage">(6)month: {{ profile.get_p_half_year_pnl }}</p>
     {% endwith %}
 {% endblock %}

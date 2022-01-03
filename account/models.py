@@ -33,3 +33,36 @@ class Profile(models.Model):
         if notes_by_p.count() > 0:
             return notes_by_p.first().total - notes_by_p.last().total
         return 0
+
+    def get_percentage_pnl_by_period(self, period=2):
+        return self.get_pnl_by_period(period) / self.earned * 100
+
+    def get_today_pnl(self):
+        return self.get_pnl_by_period(2)
+
+    def get_week_pnl(self):
+        return self.get_pnl_by_period(7)
+
+    def get_month_pnl(self):
+        return self.get_pnl_by_period(30)
+
+    def get_three_month_pnl(self):
+        return self.get_pnl_by_period(90)
+
+    def get_half_year_pnl(self):
+        return self.get_pnl_by_period(180)
+
+    def get_p_today_pnl(self):
+        return self.get_percentage_pnl_by_period(2)
+
+    def get_p_week_pnl(self):
+        return self.get_percentage_pnl_by_period(7)
+
+    def get_p_month_pnl(self):
+        return self.get_percentage_pnl_by_period(30)
+
+    def get_p_three_month_pnl(self):
+        return self.get_percentage_pnl_by_period(90)
+
+    def get_p_half_year_pnl(self):
+        return self.get_percentage_pnl_by_period(180)
