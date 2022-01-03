@@ -13,6 +13,7 @@ class AddNoteForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddNoteForm, self).__init__(*args, **kwargs)
-        self.fields['date'] = forms.DateField(initial=timezone.now, widget=forms.SelectDateWidget)
+        years = tuple(n for n in range(timezone.now().year-10, timezone.now().year + 1))
+        self.fields['date'] = forms.DateField(initial=timezone.now, widget=forms.SelectDateWidget(years=years))
         self.fields['earn'] = forms.IntegerField(initial=0, min_value=0)
         self.fields['deposit'] = forms.IntegerField(initial=0, min_value=0)
