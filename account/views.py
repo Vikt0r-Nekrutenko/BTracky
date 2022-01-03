@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.models import User
@@ -25,7 +27,15 @@ class UserRegistrationForm(forms.ModelForm):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html', {'user': request.user})
+    lm = datetime.today() - timedelta(days=30)
+    lmi = request.user.profile.note_set.filter(date__gte=lm)
+    daily_pnl = request.user.profile.note_set.first().daily_diff / request.user.profile.earned * 100
+    mpnl = (lmi.first().diff - lmi.last().diff) / request.user.profile.earned * 100
+
+    return render(request, 'dashboard.html', {'user': request.user,
+                                              'daily_pnl': daily_pnl,
+                                              'lmi': mpnl,
+                                              })
 
 
 def register(request):

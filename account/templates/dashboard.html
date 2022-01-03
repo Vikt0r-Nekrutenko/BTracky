@@ -4,18 +4,22 @@
     <style>
         .positive { color: green; }
         .negative { color: red; }
+        .percentage {}
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
             $("p").each(function (i) {
-                const n = parseInt($(this).text());
+                const n = parseFloat($(this).text());
                 if(!isNaN(n)) {
                     if (n >= 0) {
                         $(this).toggleClass('positive');
                     } else {
                         $(this).toggleClass('negative');
                     }
-                    $(this).text(new Intl.NumberFormat('us-US').format(n) + '.00');
+                    $(this).text(new Intl.NumberFormat().format(n));
+                }
+                if($(this).hasClass('percentage') === true) {
+                    $(this).append('%');
                 }
             })
         });
@@ -28,10 +32,8 @@
         <p>{{ profile.earned }}</p>
         <p>{{ profile.hold }}</p>
         <p>{{ profile.difference }}</p>
-        <ul>
-        {% for note in profile.notes_set.all %}
-            <li>{{ note.date }}</li>
-        {% endfor %}
-        </ul>
+        <p>{{ profile.note_set.first.daily_diff }}</p>
+        <p class="percentage">{{ daily_pnl }}</p>
+        <p class="percentage">{{ lmi }}</p>
     {% endwith %}
 {% endblock %}
