@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <style>
+        .positive { color: green; }
+        .negative { color: red; }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("p").each(function (i) {
+                const n = parseInt($(this).text());
+                if(!isNaN(n)) {
+                    if (n >= 0) {
+                        $(this).toggleClass('positive');
+                    } else {
+                        $(this).toggleClass('negative');
+                    }
+                    $(this).text(new Intl.NumberFormat('us-US').format(n) + '.00');
+                }
+            })
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     {% with profile=user.profile %}
     <h1>Hello {{ user.username }}</h1>
