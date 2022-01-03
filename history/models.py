@@ -8,7 +8,7 @@ from account.models import Profile
 
 class Note(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    date = models.DateField(default=timezone.now)
+    date = models.DateTimeField(default=timezone.now)
     earn = models.PositiveIntegerField(default=0)
     bank = models.IntegerField(default=0)
     deposit = models.PositiveIntegerField(default=0)
