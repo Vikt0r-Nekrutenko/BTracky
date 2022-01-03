@@ -3,6 +3,7 @@ from django.forms import ModelForm
 
 from account.models import Profile
 from history.models import Note
+from django.utils import timezone
 
 
 class AddNoteForm(ModelForm):
@@ -12,4 +13,6 @@ class AddNoteForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AddNoteForm, self).__init__(*args, **kwargs)
-        self.fields['date'] = forms.DateField(widget=forms.SelectDateWidget)
+        self.fields['date'] = forms.DateField(initial=timezone.now, widget=forms.SelectDateWidget)
+        self.fields['earn'] = forms.IntegerField(initial=0, min_value=0)
+        self.fields['deposit'] = forms.IntegerField(initial=0, min_value=0)

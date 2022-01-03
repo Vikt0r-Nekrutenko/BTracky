@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <form method="post" action="{% url 'history:add_note' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Sign-In" />
+        <table border="1">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <tr><td><input type="submit" value="Sign-In" /></td></tr>
+        </table>
     </form>
 {% endblock %}
