@@ -6,18 +6,15 @@ from history.models import Note
 
 
 @login_required
-def index(request):
+def add_note(request):
     if request.method == 'POST':
         new_note = AddNoteForm(request.POST)
 
         if new_note.is_valid():
             request.user.profile.change_earned(new_note.cleaned_data['earn'])
 
-            total = new_note.cleaned_data['bank']+new_note.cleaned_data['deposit'];
-            daily_diff = 0
-
-            if request.user.profile.notes_set.count() > 0:
-                daily_diff = total - request.user.profile.notes_set.last().total
+            total = new_note.cleaned_data['bank'] + new_note.cleaned_data['deposit'];
+            daily_diff = request.user.profile.get_last_total()
             diff = total - request.user.profile.earned
 
             note = Note(profile=request.user.profile,
@@ -32,13 +29,15 @@ def index(request):
             note.save()
 
             request.user.profile.change_hold_and_diff()
-
-        return render(request, 'dashboard.html', {'user': request.user})
     else:
         new_note = AddNoteForm()
 
-    return render(request, 'index.html', {'form': new_note,
-                                          'profile': request.user.profile})
+    return render(request, 'add_note.html', {'form': new_note})
+
+
+@login_required
+def history(request):
+    return render(request, 'history.html', {'profile': request.user.profile})
 
 
 @login_required

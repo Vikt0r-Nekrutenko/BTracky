@@ -4,6 +4,7 @@ from . import views
 app_name = 'history'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path(r'<part_id>', views.remove, name=''),
+    path('add_note', views.add_note, name='add_note'),
+    path('', views.history, name='history'),
+    path(r'<part_id>', views.remove, name='remove'),
 ]

@@ -13,10 +13,15 @@ class Profile(models.Model):
         self.save()
 
     def change_hold_and_diff(self):
-        if self.notes_set.count() > 0:
-            self.hold = self.notes_set.last().total
-            self.difference = self.notes_set.last().diff
+        if self.note_set.count() > 0:
+            self.hold = self.note_set.last().total
+            self.difference = self.note_set.last().diff
         else:
             self.hold = 0
             self.difference = 0
         self.save()
+
+    def get_last_total(self):
+        if self.note_set.count() > 0:
+            return self.note_set.last().total
+        return 0
