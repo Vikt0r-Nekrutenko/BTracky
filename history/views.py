@@ -11,24 +11,26 @@ def add_note(request):
         new_note = AddNoteForm(request.POST)
 
         if new_note.is_valid():
-            request.user.profile.change_earned(new_note.cleaned_data['earn'])
+            cd = new_note.cleaned_data
+            cp = request.user.profile
 
-            total = new_note.cleaned_data['bank'] + new_note.cleaned_data['deposit'];
-            daily_diff = request.user.profile.get_last_total()
-            diff = total - request.user.profile.earned
+            cp.change_earned(cd['earn'])
+            total = cd['bank'] + cd['deposit'];
+            daily_diff = cp.get_last_total()
+            diff = total - cp.earned
 
-            note = Note(profile=request.user.profile,
-                        date=new_note.cleaned_data['date'],
-                        earn=new_note.cleaned_data['earn'],
-                        bank=new_note.cleaned_data['bank'],
-                        deposit=new_note.cleaned_data['deposit'],
+            note = Note(profile=cp,
+                        date=cd['date'],
+                        earn=cd['earn'],
+                        bank=cd['bank'],
+                        deposit=cd['deposit'],
                         total=total,
                         daily_diff=daily_diff,
                         diff=diff,
-                        comment=new_note.cleaned_data['comment'])
+                        comment=cd['comment'])
             note.save()
 
-            request.user.profile.change_hold_and_diff()
+            cp.change_hold_and_diff()
     else:
         new_note = AddNoteForm()
 
