@@ -34,7 +34,8 @@ def add_note(request):
     else:
         new_note = AddNoteForm()
 
-    return render(request, 'add_note.html', {'form': new_note})
+    return render(request, 'add_note.html', {'form': new_note,
+                                             'last_note': Note.last_day_info(request.user.id)})
 
 
 @login_required

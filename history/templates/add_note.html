@@ -3,8 +3,29 @@
     <form method="post" action="{% url 'history:add_note' %}">
         <table border="1">
             {% csrf_token %}
-            {{ form.as_table }}
-            <tr><td><input type="submit" value="Sign-In" /></td></tr>
+            <tr>
+                <td>{{ form.date }}</td>
+                <td>{{ last_note.date }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.earn }}</td>
+                <td>{{ last_note.earn }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.bank }}</td>
+                <td>{{ last_note.bank }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.deposit }}</td>
+                <td>{{ last_note.deposit }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.comment }}</td>
+                <td>{{ last_note.comment }}</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Sign-In" /></td>
+            </tr>
         </table>
     </form>
 {% endblock %}

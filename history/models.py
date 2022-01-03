@@ -19,3 +19,8 @@ class Note(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+    @classmethod
+    def last_day_info(cls, user_id):
+        user_data = Note.objects.filter(profile__user_id=user_id)
+        return user_data.first()
