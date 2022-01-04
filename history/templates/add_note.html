@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
     <title>Add note</title>
+    <link rel="stylesheet" href="{% static 'form_styles.css' %}">
     <script type="text/javascript">
         $(document).ready(function() {
             $('#insert_from_last_date').click(function (e) {
@@ -28,28 +30,51 @@
         <table border="1">
             {% csrf_token %}
             <tr>
+                <td>Date</td>
                 <td>{{ form.date }}</td>
-                <td><input id="insert_from_last_date" type="button"/></td>
+                <td>
+                    <p>
+                        current
+                        <input id="insert_from_last_date" type="button"/>
+                    </p>
+                </td>
             </tr>
             <tr>
+                <td>Earn</td>
                 <td>{{ form.earn }}</td>
-                <td><input id="insert_from_last_earn" type="button" value="{{ last_note.earn }}" /></td>
+                <td>
+                    <p>
+                        last note has
+                        <input id="insert_from_last_earn" type="button" value="{{ last_note.earn }}" />
+                    </p>
+                </td>
             </tr>
             <tr>
+                <td>Bank</td>
                 <td>{{ form.bank }}</td>
-                <td><input id="insert_from_last_bank" type="button" value="{{ last_note.bank }}" /></td>
+                <td>
+                    <p>
+                        last note has
+                        <input id="insert_from_last_bank" type="button" value="{{ last_note.bank }}" />
+                    </p>
+                </td>
             </tr>
             <tr>
+                <td>Deposit</td>
                 <td>{{ form.deposit }}</td>
-                <td><input id="insert_from_last_deposit" type="button" value="{{ last_note.deposit }}"/></td>
+                <td>
+                    <p>
+                        last note has
+                        <input id="insert_from_last_deposit" type="button" value="{{ last_note.deposit }}"/>
+                    </p>
+                </td>
             </tr>
             <tr>
+                <td>Comment</td>
                 <td>{{ form.comment }}</td>
-                <td>{{ last_note.comment }}</td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Sign-In" /></td>
+                <td><p>last note has</p>{{ last_note.comment }}</td>
             </tr>
         </table>
+        <input type="submit" value="Sign-In" />
     </form>
 {% endblock %}
