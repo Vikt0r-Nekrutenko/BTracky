@@ -1,0 +1,46 @@
+#history {
+  color: #aaa;
+  margin: 50px 5%;
+  background-color: #000;
+  border-radius: 25px;
+  z-index: 2;
+  text-align: center;
+  min-width: 900px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin-top: -30px;
+}
+
+table {
+  width: 100%;
+}
+
+table, th, tr, td {
+  border: 1px solid #111;
+  border-collapse: collapse;
+  padding: 12px 7px;
+  border: 1px solid #666;
+}
+
+table tr:hover td{
+  background-color: #666;
+}
+
+.paginator {
+  margin: 15px 0;
+  font-size: 30px;
+}
+
+.paginator a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 40px;
+}
+
+.paginator a:hover {
+  color: #fff;
+}
