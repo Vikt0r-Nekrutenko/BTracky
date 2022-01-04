@@ -35,7 +35,11 @@ class Profile(models.Model):
         return 0
 
     def get_percentage_pnl_by_period(self, period=2):
-        return self.get_pnl_by_period(period) / self.earned * 100
+        pnl = self.get_pnl_by_period(period)
+
+        if pnl != 0:
+            return pnl / self.earned * 100
+        return 0
 
     def get_today_pnl(self):
         return self.get_pnl_by_period(2)

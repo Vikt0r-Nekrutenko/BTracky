@@ -55,3 +55,39 @@ def remove(request, part_id=None):
 
     request.user.profile.change_hold_and_diff()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+'''
+cp = request.user.profile
+    wb = load_workbook(filename='Finance\'s.xlsx')
+    sheet = wb['finances']
+
+    n = 1
+    for n in range(188, 189):
+        date1 = sheet.cell(n, 1).value
+        date2 = timezone.now()
+
+        date1 = datetime.datetime(date1.year,
+                                  date1.month,
+                                  date1.day,
+                                  date2.hour,
+                                  date2.minute,
+                                  date2.second,
+                                  date2.microsecond)
+
+        #cp.change_earned(sheet.cell(n, 2).value)
+        #total = sheet.cell(n, 3).value + sheet.cell(n, 4).value
+        #daily_diff = total - cp.get_last_total()
+        #diff = total - cp.earned
+
+        note = Note(profile=request.user.profile,
+                        date=date1,
+                        earn=sheet.cell(n, 2).value,
+                        bank=sheet.cell(n, 3).value,
+                        deposit=sheet.cell(n, 4).value,
+                        total=total,
+                        daily_diff=daily_diff,
+                        diff=diff,
+                        comment=sheet.cell(n, 8).value)
+        #note.save()
+        #cp.change_hold_and_diff()
+'''
