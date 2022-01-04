@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet", href="{% static 'form_styles.css' %}">
+{% endblock %}
+
 {% block main %}
     {% if form.errors %}
       <p>Your username and password didn't match. Please try again.</p>
@@ -15,9 +21,22 @@
     {% endif %}
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Sign-In" />
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td>
+                        {{ form.username }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        {{ form.password }}
+                    </td>
+                </tr>
+            </table>
+        <span><input type="submit" value="Sign-In" />
         <input type="hidden" name="next" value="{{ next }}">
-        <a href="{% url 'registration' %}">Sign-Up</a>
+        <a id="signUp" href="{% url 'registration' %}">Sign-Up</a></span>
     </form>
 {% endblock %}
