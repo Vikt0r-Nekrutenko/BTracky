@@ -1,0 +1,98 @@
+#mainInfo {
+  margin: 30px 10%;
+  background-color: #000;
+  border-radius: 25px;
+  padding: 15px;
+  z-index: 2;
+}
+
+#holdInfo {
+  text-align: center;
+}
+
+#holdInfo h1{ 
+  font-size: 70px;
+  margin: 10px;
+}
+
+#holdInfo h2 { font-size: 40px; }
+
+#holdInfo h3 { font-size: 20px; }
+
+#mainInfo #holdInfo > h2, h3 {
+  color: #666;
+}
+
+#mainInfo #EDInfo h2 {
+  color: #666;
+}
+
+#dailyInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#holdInfo > #dailyInfo > h2, h3{
+  margin: 5px;
+}
+
+#EDInfo {
+  display: flex;
+  text-align: center;
+  margin: 20px 0;
+  flex-direction: column;
+}
+
+#EDInfo table { 
+  margin-bottom: 15px; 
+  border-top: 1px solid #444; 
+}
+
+#EDInfo table tr td {
+/*   border: 1px solid yellow; */
+
+}
+
+#EDInfo h1 { font-size: 40px; }
+
+#EDInfo > h1, h2, h3 {
+  margin: 5px 0;
+  padding: 0;
+}
+
+#pnl h1 { font-size: 25px;}
+#pnl h2 { font-size: 17px;}
+#pnl h3 { font-size: 17px;}
+
+@media only screen and (max-width: 1200px) {
+  #mainInfo {
+    font-size: 32px;
+    margin: 15% 5%;
+    padding: 5% 5%;
+  }
+  
+  #holdInfo h1{ 
+    font-size: 110px;
+    margin: 30px;
+  }
+
+  #holdInfo h2 { font-size: 55px; }
+
+  #holdInfo h3 { font-size: 35px; margin: 0 20px; }
+  
+  #EDInfo h1 { font-size: 50px; }
+  
+  #EDInfo table h1 { margin: 0; }
+  #EDInfo table h2 { margin: 0; }
+  #EDInfo table h3 { margin: 0;}
+  
+  #EDInfo table tr td{ 
+    margin-top: 35px; 
+    padding: 25px 10px;
+  }
+  
+  #pnl h1 { font-size: 45px; }
+  #pnl h2 { font-size: 35px; }
+  #pnl h3 { font-size: 30px; }
+}

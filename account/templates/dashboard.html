@@ -1,14 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block head %}
-    <style>
-        .positive { color: green; }
-        .negative { color: red; }
-        .percentage {}
-    </style>
+    <link rel="stylesheet" href="{% static 'dashboard_styles.css' %}">
     <script type="text/javascript">
         $(document).ready(function () {
-            $("p").each(function (i) {
+            $("h3").each(function (i) {
                 const n = parseFloat($(this).text());
                 if(!isNaN(n)) {
                     if (n >= 0) {
@@ -16,34 +13,66 @@
                     } else {
                         $(this).toggleClass('negative');
                     }
+                }
+            });
+            $("h1, .percentage").each(function () {
+                const n = parseFloat($(this).text());
+                if(!isNaN(n)) {
                     $(this).text(new Intl.NumberFormat().format(n));
+                    if($(this).hasClass('percentage') === true) {
+                        $(this).append('%');
+                    }
                 }
-                if($(this).hasClass('percentage') === true) {
-                    $(this).append('%');
-                }
-            })
+            });
         });
     </script>
 {% endblock %}
 
 {% block main %}
     {% with profile=user.profile %}
-    <h1>Hello {{ user.username }}</h1>
-        <p>{{ profile.earned }}</p>
-        <p>{{ profile.hold }}</p>
-        <p>{{ profile.difference }}</p>
-        <p>{{ profile.note_set.first.daily_diff }}</p>
-
-        <p>today: {{ profile.get_today_pnl }}</p>
-        <p>week: {{ profile.get_week_pnl }}</p>
-        <p>month: {{ profile.get_month_pnl }}</p>
-        <p>(3)month: {{ profile.get_three_month_pnl }}</p>
-        <p>(6)month: {{ profile.get_half_year_pnl }}</p>
-
-        <p class="percentage">today: {{ profile.get_p_today_pnl }}</p>
-        <p class="percentage">week: {{ profile.get_p_week_pnl }}</p>
-        <p class="percentage">month: {{ profile.get_p_month_pnl }}</p>
-        <p class="percentage">(3)month: {{ profile.get_p_three_month_pnl }}</p>
-        <p class="percentage">(6)month: {{ profile.get_p_half_year_pnl }}</p>
+    <div id="mainInfo">
+        <h1>Hello {{ user.username }}</h1>
+        <div id="holdInfo">
+            <h2>HOLD</h2>
+            <h1>{{ profile.hold }}</h1>
+            <div id="dailyInfo">
+                <h3>Today's PnL</h3>
+                <h2>+10 000{{ profile.get_today_pnl }}</h2>
+                <h3 class="percentage">+51.334{{ profile.get_p_today_pnl }}</h3>
+            </div>
+        </div>
+        <div id="EDInfo">
+            <table>
+                <tr>
+                    <td><h2>EARNED</h2></td>
+                    <td><h2>DIFFERENCE</h2></td>
+                </tr>
+                <tr>
+                    <td><h1>{{ profile.earned }}</h1></td>
+                    <td><h1>{{ profile.difference }}</h1></td>
+                </tr>
+            </table>
+            <table id="pnl">
+                <tr>
+                    <td><h2>Week PnL</h2></td>
+                    <td><h2>Month PnL</h2></td>
+                    <td><h2>3 month PnL</h2></td>
+                    <td><h2>6 month PnL</h2></td>
+                </tr>
+                <tr>
+                    <td><h1>{{ profile.get_week_pnl }}</h1></td>
+                    <td><h1>{{ profile.get_month_pnl }}</h1></td>
+                    <td><h1>{{ profile.get_three_month_pnl }}</h1></td>
+                    <td><h1>{{ profile.get_half_year_pnl }}</h1></td>
+                </tr>
+                <tr>
+                    <td><h3 class="percentage">{{ profile.get_p_week_pnl }}</h3></td>
+                    <td><h3 class="percentage">{{ profile.get_p_month_pnl }}</h3></td>
+                    <td><h3 class="percentage">{{ profile.get_p_three_month_pnl }}</h3></td>
+                    <td><h3 class="percentage">{{ profile.get_p_half_year_pnl }}</h3></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     {% endwith %}
 {% endblock %}
