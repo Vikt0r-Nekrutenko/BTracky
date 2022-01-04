@@ -113,11 +113,11 @@ footer img {
 }
 
 @media only screen and (max-width: 1200px) {
-/*     footer {
+    footer {
       margin-bottom: -9%;
       margin-right: 0;
     }
-   */
+  
   footer div {
     font-size: 35px;
   }
