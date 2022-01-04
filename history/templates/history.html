@@ -1,28 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
     <table border="1">
-    <tr>
-        <td>Date</td>
-        <td>Earn</td>
-        <td>Bank</td>
-        <td>Deposit</td>
-        <td>Total</td>
-        <td>Daily difference</td>
-        <td>Difference</td>
-        <td>Comment</td>
-    </tr>
-    {% for note in profile.note_set.all %}
         <tr>
-            <td>{{ note.date }}</td>
-            <td>{{ note.earn }}</td>
-            <td>{{ note.bank }}</td>
-            <td>{{ note.deposit }}</td>
-            <td>{{ note.total }}</td>
-            <td>{{ note.daily_diff }}</td>
-            <td>{{ note.diff }}</td>
-            <td>{{ note.comment }}</td>
-            <td><a href={{note.id}}>DEL</a></td>
+            <td>Date</td>
+            <td>Earn</td>
+            <td>Bank</td>
+            <td>Deposit</td>
+            <td>Total</td>
+            <td>Daily difference</td>
+            <td>Difference</td>
+            <td>Comment</td>
         </tr>
-    {% endfor %}
+        {% for note in page_obj %}
+            <tr>
+                <td>{{ note.date }}</td>
+                <td>{{ note.earn }}</td>
+                <td>{{ note.bank }}</td>
+                <td>{{ note.deposit }}</td>
+                <td>{{ note.total }}</td>
+                <td>{{ note.daily_diff }}</td>
+                <td>{{ note.diff }}</td>
+                <td>{{ note.comment }}</td>
+                <td><a href={{note.id}}>DEL</a></td>
+            </tr>
+        {% endfor %}
     </table>
+
+    <div class="paginator">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">to first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">prev</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
 {% endblock %}

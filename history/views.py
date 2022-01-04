@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.forms import forms
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+
 from history.forms import AddNoteForm
 from history.models import Note
 
@@ -43,7 +45,11 @@ def add_note(request):
 
 @login_required
 def history(request):
-    return render(request, 'history.html', {'profile': request.user.profile})
+    note_list = request.user.profile.note_set.all()
+    paginator = Paginator(note_list, 25)
+    page_n = request.GET.get('page')
+    page_obj = paginator.get_page(page_n)
+    return render(request, 'history.html', {'page_obj': page_obj})
 
 
 @login_required
