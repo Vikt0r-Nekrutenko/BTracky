@@ -3,7 +3,6 @@ form {
   margin: 10%;
   background-color: #000;
   border-radius: 25px;
-  z-index: 2;
   text-align: center;
   padding: 25px;
   display: flex;
@@ -56,4 +55,41 @@ input[type=submit] {
   border: none;
   border-radius: 15px;
   padding: 10px;
+}
+
+#content h1 {
+  display: flex;
+  font-size: 60px;
+  margin: 0;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+@media only screen and (max-width: 1200px) {
+    footer {
+      margin-bottom: -9%;
+      margin-right: 0;
+    }
+  
+  form {
+    margin: 10% 3%;  
+  }
+  
+  table, tr, td 
+  { 
+    border: 1px solid #434; 
+    font-size: 20px; 
+    padding: 20px; 
+    margin: 0; 
+    width: auto;
+    text-align: left;
+  }
+  
+  input[type=button] {
+    font-size: 20px;
+  }
+  
+  input[type=number], input[type=text] {
+    font-size: 20px;
+  }
 }

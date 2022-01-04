@@ -26,6 +26,7 @@
     </script>
 {% endblock %}
 {% block main %}
+    <h1>Add new note</h1>
     <form method="post" action="{% url 'history:add_note' %}">
         <table border="1">
             {% csrf_token %}
