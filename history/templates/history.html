@@ -3,6 +3,26 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'history_styles.css' %}">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('td').each(function () {
+                if($(this).hasClass('formatted')) {
+                    const n = parseInt($(this).text())
+                    $(this).text(new Intl.NumberFormat().format(n))
+
+                    if($(this).hasClass('colored')) {
+                        if (n < 0) {
+                            $(this).addClass('negative');
+                        } else if (n > 0) {
+                            $(this).addClass('positive');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 {% endblock %}
 
 {% block main %}
@@ -20,13 +40,13 @@
         </tr>
         {% for note in page_obj %}
             <tr>
-                <td>{{ note.date }}</td>
-                <td>{{ note.earn }}</td>
-                <td>{{ note.bank }}</td>
-                <td>{{ note.deposit }}</td>
-                <td>{{ note.total }}</td>
-                <td>{{ note.daily_diff }}</td>
-                <td>{{ note.diff }}</td>
+                <td>{{ note.date.day }}-{{ note.date.month }}-{{ note.date.year }}</td>
+                <td class="formatted colored">{{ note.earn }}</td>
+                <td class="formatted">{{ note.bank }}</td>
+                <td class="formatted">{{ note.deposit }}</td>
+                <td class="formatted">{{ note.total }}</td>
+                <td class="formatted colored">{{ note.daily_diff }}</td>
+                <td class="formatted colored">{{ note.diff }}</td>
                 <td>{{ note.comment }}</td>
                 <td><a href={{note.id}}>DEL</a></td>
             </tr>

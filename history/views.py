@@ -46,7 +46,7 @@ def add_note(request):
 @login_required
 def history(request):
     note_list = request.user.profile.note_set.all()
-    paginator = Paginator(note_list, 25)
+    paginator = Paginator(note_list, 40)
     page_n = request.GET.get('page')
     page_obj = paginator.get_page(page_n)
     return render(request, 'history.html', {'page_obj': page_obj})

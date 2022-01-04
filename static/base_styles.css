@@ -123,7 +123,7 @@ footer img {
   }
   
   footer img {
-    width: 120px;
+    width: 60px;
     margin: 0 20px;
   }
   
@@ -131,12 +131,12 @@ footer img {
     padding: 30px 20px;
   }
   
-  body > header > ul a { 
+  header > ul a { 
     font-size: 38px; 
     padding: 0 10px;
   }
   
-  body > header img {
+  header img {
     width: 280px;
   }
 }

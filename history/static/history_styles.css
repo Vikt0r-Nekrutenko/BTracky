@@ -5,7 +5,6 @@
   border-radius: 25px;
   z-index: 2;
   text-align: center;
-  min-width: 900px;
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -20,14 +19,14 @@ table {
 }
 
 table, th, tr, td {
-  border: 1px solid #111;
+  border: 2px solid #111;
   border-collapse: collapse;
   padding: 12px 7px;
   border: 1px solid #666;
 }
 
 table tr:hover td{
-  background-color: #666;
+  background-color: #444;
 }
 
 .paginator {
@@ -43,4 +42,23 @@ table tr:hover td{
 
 .paginator a:hover {
   color: #fff;
+}
+
+table a {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #e34;
+  color: #ddd;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+table a:hover { opacity: 0.5; }
+
+@media only screen and (max-width: 1200px) {
+  #history {
+    margin: 0;
+    font-size: 18px;
+    border-radius: 0;
+  }
 }
