@@ -27,9 +27,9 @@ SECRET_KEY = 'django-insecure-am9_(y^lq&o!*&o^qq4c2+_+4e=jk3f=%*c)d60^*$ldvtsk#2
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'btracky.herokuapp.com',
+    '127.0.0.1',
     '192.168.0.105',
-    'localhost',
-    '0.0.0.0'
 ]
 
 # Application definition
