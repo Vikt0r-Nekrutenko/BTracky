@@ -37,11 +37,13 @@ class Profile(models.Model):
     def get_pnl_by_period(self, period=1):
         p = datetime.today() - timedelta(days=period)
         notes_by_p = self.note_set.filter(~Q(date__gte=p))
+
         if notes_by_p.count() == 1:
             return notes_by_p.first().daily_diff
 
         elif notes_by_p.count() > 0:
             return self.note_set.first().total - notes_by_p.first().total
+        return 0
 
     def get_percentage_pnl_by_period(self, period=1):
         pnl = self.get_pnl_by_period(period)
