@@ -120,7 +120,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -135,8 +135,8 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 STATICFILES_DIRS = [
-    '/home/grhin0/web/btracky/static',
-    '/home/grhin0/web/btracky/media',
+    '../btracky/static',
+    '../btracky/media',
 ]
 
 # Default primary key field type

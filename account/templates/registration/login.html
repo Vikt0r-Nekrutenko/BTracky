@@ -3,22 +3,17 @@
 
 {% block head %}
     <link rel="stylesheet", href="{% static 'form_styles.css' %}">
+
+    <style rel="stylesheet">
+        .error {
+            color: #e34;
+            margin: 15px;
+            font-size: 30px;
+        }
+    </style>
 {% endblock %}
 
 {% block main %}
-    {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.
-            </p>
-        {% else %}
-            <p>Please login to see this page</p>
-        {% endif %}
-    {% endif %}
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
             <table>
@@ -38,5 +33,18 @@
         <span><input type="submit" value="Sign-In" />
         <input type="hidden" name="next" value="{{ next }}">
         <a id="signUp" href="{% url 'registration' %}">Sign-Up</a></span>
+        {% if form.errors %}
+          <p class="error">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p class="warning">Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.
+                </p>
+            {% else %}
+                <p class="error">Please login to see this page</p>
+            {% endif %}
+        {% endif %}
     </form>
 {% endblock %}

@@ -61,9 +61,19 @@
   padding: 0;
 }
 
-#pnl h1 { font-size: 25px;}
-#pnl h2 { font-size: 17px;}
-#pnl h3 { font-size: 17px;}
+#pnl {
+  display: flex;
+}
+
+#pnl ul{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#pnl > ul > li > h1 { font-size: 45px;}
+#pnl > ul > li > h2 { font-size: 27px;}
+#pnl > ul > li > h3 { font-size: 37px;}
 
 @media only screen and (max-width: 1200px) {
   #mainInfo {
@@ -95,4 +105,46 @@
   #pnl h1 { font-size: 45px; }
   #pnl h2 { font-size: 35px; }
   #pnl h3 { font-size: 30px; }
+}
+
+@media only screen and (max-width: 1600px) {
+  #mainInfo {
+    font-size: 18px;
+    margin: 10% 5%;
+    padding: 5% 5%;
+  }
+
+  #holdInfo h1{
+    font-size: 90px;
+    margin: 20px;
+  }
+
+  #holdInfo h2 { font-size: 45px; }
+
+  #holdInfo h3 { font-size: 25px; margin: 0 20px; }
+
+  #EDInfo h1 { font-size: 40px; }
+
+  #EDInfo table h1 { margin: 0; }
+  #EDInfo table h2 { margin: 0; }
+  #EDInfo table h3 { margin: 0;}
+
+  #EDInfo table tr td{
+    margin-top: 25px;
+    padding: 15px 10px;
+  }
+
+  #pnl {
+  display: flex;
+}
+
+#pnl ul{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+  
+  #pnl h1 { font-size: 35px; }
+  #pnl h2 { font-size: 25px; }
+  #pnl h3 { font-size: 20px; }
 }

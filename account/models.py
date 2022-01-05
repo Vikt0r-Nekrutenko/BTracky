@@ -2,6 +2,9 @@ from django.conf import settings
 from django.db import models
 from datetime import datetime, timedelta
 
+from django.db.models import Q
+from django.forms import forms
+
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -27,14 +30,16 @@ class Profile(models.Model):
             return self.note_set.first().total
         return 0
 
-    def get_pnl_by_period(self, period=2):
+    def get_pnl_by_period(self, period=1):
         p = datetime.today() - timedelta(days=period)
-        notes_by_p = self.note_set.filter(date__gte=p)
-        if notes_by_p.count() > 0:
-            return notes_by_p.first().total - notes_by_p.last().total
-        return 0
+        notes_by_p = self.note_set.filter(~Q(date__gte=p))
+        if notes_by_p.count() == 1:
+            return notes_by_p.first().daily_diff
 
-    def get_percentage_pnl_by_period(self, period=2):
+        elif notes_by_p.count() > 0:
+            return self.note_set.first().total - notes_by_p.first().total
+
+    def get_percentage_pnl_by_period(self, period=1):
         pnl = self.get_pnl_by_period(period)
 
         if pnl != 0:
@@ -42,7 +47,7 @@ class Profile(models.Model):
         return 0
 
     def get_today_pnl(self):
-        return self.get_pnl_by_period(2)
+        return self.get_pnl_by_period()
 
     def get_week_pnl(self):
         return self.get_pnl_by_period(7)
@@ -57,7 +62,7 @@ class Profile(models.Model):
         return self.get_pnl_by_period(180)
 
     def get_p_today_pnl(self):
-        return self.get_percentage_pnl_by_period(2)
+        return self.get_percentage_pnl_by_period()
 
     def get_p_week_pnl(self):
         return self.get_percentage_pnl_by_period(7)

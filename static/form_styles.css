@@ -96,7 +96,8 @@ span {
   table, tr, td 
   { 
     border: 1px solid #434; 
-    font-size: 20px; 
+    font-size: 40px;
+    font-weight: bold;
     padding: 20px; 
     margin: 0; 
     width: auto;

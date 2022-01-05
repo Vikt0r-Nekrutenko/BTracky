@@ -52,26 +52,32 @@
                     <td><h1>{{ profile.difference }}</h1></td>
                 </tr>
             </table>
-            <table id="pnl">
-                <tr>
-                    <td><h2>Week PnL</h2></td>
-                    <td><h2>Month PnL</h2></td>
-                    <td><h2>3 month PnL</h2></td>
-                    <td><h2>6 month PnL</h2></td>
-                </tr>
-                <tr>
-                    <td><h1>{{ profile.get_week_pnl }}</h1></td>
-                    <td><h1>{{ profile.get_month_pnl }}</h1></td>
-                    <td><h1>{{ profile.get_three_month_pnl }}</h1></td>
-                    <td><h1>{{ profile.get_half_year_pnl }}</h1></td>
-                </tr>
-                <tr>
-                    <td><h3 class="percentage">{{ profile.get_p_week_pnl }}</h3></td>
-                    <td><h3 class="percentage">{{ profile.get_p_month_pnl }}</h3></td>
-                    <td><h3 class="percentage">{{ profile.get_p_three_month_pnl }}</h3></td>
-                    <td><h3 class="percentage">{{ profile.get_p_half_year_pnl }}</h3></td>
-                </tr>
-            </table>
+
+            <div id="pnl">
+                <ul>
+                    <li><h2>Week PnL</h2></li>
+                    <li><h1>{{ profile.get_week_pnl }}</h1></li>
+                    <li><h3 class="percentage">{{ profile.get_p_week_pnl }}</h3></li>
+                </ul>
+
+                <ul>
+                    <li><h2>Month PnL</h2></li>
+                    <li><h1>{{ profile.get_month_pnl }}</h1></li>
+                    <li><h3 class="percentage">{{ profile.get_p_month_pnl }}</h3></li>
+                </ul>
+
+                <ul>
+                    <li><h2>3 month PnL</h2></li>
+                    <li><h1>{{ profile.get_three_month_pnl }}</h1></li>
+                    <li><h3 class="percentage">{{ profile.get_p_three_month_pnl }}</h3></li>
+                </ul>
+
+                <ul>
+                    <li><h2>6 month PnL</h2></li>
+                    <li><h1>{{ profile.get_half_year_pnl }}</h1></li>
+                    <li><h3 class="percentage">{{ profile.get_p_half_year_pnl }}</h3></li>
+                </ul>
+            </div>
         </div>
     </div>
     {% endwith %}
