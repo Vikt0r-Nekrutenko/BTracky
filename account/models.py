@@ -33,6 +33,7 @@ class Profile(models.Model):
     def get_last_bank(self):
         if self.note_set.count() > 0:
             return self.note_set.first().bank
+        return 0
 
     def get_pnl_by_period(self, period=1):
         p = datetime.today() - timedelta(days=period)
