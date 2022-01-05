@@ -27,8 +27,7 @@ class UserRegistrationForm(forms.ModelForm):
 @csrf_protect
 @login_required
 def dashboard(request):
-    c = {}
-    return render(request, 'dashboard.html', {'user': request.user}, c)
+    return render(request, 'dashboard.html')
 
 
 def register(request):
