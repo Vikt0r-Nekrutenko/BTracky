@@ -8,13 +8,5 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="PostgreSQL" uuid="38126973-3207-4ba1-a8f6-53d3e38d0244">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>postgres://ispaihcjawntdu:194944a1716143ca054f952541fb94a4929c95a1502af0980d37c22cbfbd8eda@ec2-3-224-251-59.compute-1.amazonaws.com:5432/d2n0radnbhpi4k</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>
