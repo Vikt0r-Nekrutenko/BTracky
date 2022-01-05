@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
 
 from account.models import Profile
 
@@ -23,9 +24,11 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['repeat_password']
 
 
+@csrf_protect
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html', {'user': request.user})
+    c = {}
+    return render(request, 'dashboard.html', {'user': request.user}, c)
 
 
 def register(request):
