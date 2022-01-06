@@ -1,24 +1,16 @@
 form {
   color: #aaa;
-  margin: 10%;
+  margin: 10% 20%;
   background-color: #000;
   border-radius: 25px;
   text-align: center;
-  padding: 25px;
+  padding: 45px;
   display: flex;
   flex-direction: column;
 }
 
-table p {
-  font-size: 18px;
-}
-
-table, tr, td { 
-  border: 1px solid #434; 
-  font-size: 30px; 
-  padding: 20px; 
-  margin: 0; 
-  width: auto;
+p {
+  font-size: 38px;
   text-align: left;
 }
 
@@ -31,13 +23,13 @@ input[type=button] {
 }
 
 input[type=number], input[type=text], input[type=password] {
+  width: 100%;
   background: 0;
   background-color: #222;
   border: 1px solid #666;
   font-size: 30px;
   color: #aaa;
   padding: 5px;
-  width: 100%;
 }
 
 input[type=number] {
@@ -52,15 +44,15 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 input[type=submit], #signUp {
-  margin: auto;
+  margin: 10px auto;
   font-size: 36px;
   background-color: #2d7;
   color: #000;
   border: none;
   border-radius: 15px;
-  padding: 10px;
+  padding: 10px 0;
   font-weight: bold;
-  width: 100%;
+  width: 101%;
   text-align: center;
 }
 

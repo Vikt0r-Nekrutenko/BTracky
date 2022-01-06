@@ -28,54 +28,34 @@
 {% block main %}
     <h1>Add new note</h1>
     <form method="post" action="{% url 'history:add_note' %}">
-        <table border="1">
             {% csrf_token %}
-            <tr>
-                <td>Date</td>
-                <td>{{ form.date }}</td>
-                <td>
-                    <p>
-                        current
-                        <input id="insert_from_last_date" type="button"/>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Earn</td>
-                <td>{{ form.earn }}</td>
-                <td>
-                    <p>
-                        last note has
-                        <input id="insert_from_last_earn" type="button" value="{{ last_note.earn }}" />
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Bank</td>
-                <td>{{ form.bank }}</td>
-                <td>
-                    <p>
-                        last note has
-                        <input id="insert_from_last_bank" type="button" value="{{ last_note.bank }}" />
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Deposit</td>
-                <td>{{ form.deposit }}</td>
-                <td>
-                    <p>
-                        last note has
-                        <input id="insert_from_last_deposit" type="button" value="{{ last_note.deposit }}"/>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Comment</td>
-                <td>{{ form.comment }}</td>
-                <td><p>last note has</p>{{ last_note.comment }}</td>
-            </tr>
-        </table>
+
+            <ul>
+                <li>{{ form.date.label }}</li>
+                <li>{{ form.date }}</li>
+                current
+                <input id="insert_from_last_date" type="button"/>
+
+                <li>{{ form.earn.label }}</li>
+                <li>{{ form.earn }}</li>
+                last note has
+                <input id="insert_from_last_earn" type="button"/>
+
+                <li>{{ form.bank.label }}</li>
+                <li>{{ form.bank }}</li>
+                last note has
+                <input id="insert_from_last_bank" type="button"/>
+
+                <li>{{ form.deposit.label }}</li>
+                <li>{{ form.deposit }}</li>
+                last note has
+                <input id="insert_from_last_deposit" type="button"/>
+
+                <li>{{ form.comment.label }}</li>
+                <li>{{ form.comment }}</li>
+                last note has
+                <input id="insert_from_last_comment" type="button"/>
+            </ul>
         <input type="submit" value="Add Note" />
     </form>
 {% endblock %}
