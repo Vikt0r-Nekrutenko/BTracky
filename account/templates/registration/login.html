@@ -16,23 +16,11 @@
 {% block main %}
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
-            <table>
-                <tr>
-                    <td>Username</td>
-                    <td>
-                        {{ form.username }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td>
-                        {{ form.password }}
-                    </td>
-                </tr>
-            </table>
-        <span><input type="submit" value="Sign-In" />
+        {{ form.as_p }}
+        <input type="submit" value="Sign-In" />
         <input type="hidden" name="next" value="{{ next }}">
-        <a id="signUp" href="{% url 'registration' %}">Sign-Up</a></span>
+        <a id="signUp" href="{% url 'registration' %}">Sign-Up</a>
+
         {% if form.errors %}
           <p class="error">Your username and password didn't match. Please try again.</p>
         {% endif %}

@@ -7,8 +7,8 @@
 
 {% block main %}
     <form action="." method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
+        {{ user_form.as_p }}
         <p><input type="submit" value="Create my account"></p>
     </form>
 {% endblock %}
