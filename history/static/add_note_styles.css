@@ -1,7 +1,14 @@
-#content ul {
+#content ul li {
     display: flex;
     flex-direction: column;
     margin: auto;
     text-align: left;
-/*     width: 100%; */
+    font-size: 15px;
+    border: 1px solid #444;
+    padding: 15px;
 }
+
+#content > ul > li > h2, h3, h5 {
+    margin: 10px 0;
+    padding: 0;
+} 

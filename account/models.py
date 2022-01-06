@@ -35,6 +35,21 @@ class Profile(models.Model):
             return self.note_set.first().bank
         return 0
 
+    def get_last_earn(self):
+        if self.note_set.count() > 0:
+            return self.note_set.first().earn
+        return 0
+
+    def get_last_depo(self):
+        if self.note_set.count() > 0:
+            return self.note_set.first().deposit
+        return 0
+
+    def get_last_comment(self):
+        if self.note_set.count() > 0:
+            return self.note_set.first().comment
+        return 0
+
     def get_pnl_by_period(self, period=1):
         p = datetime.today() - timedelta(days=period)
         notes_by_p = self.note_set.filter(~Q(date__gte=p))
