@@ -3,6 +3,7 @@
 {% block head %}
     <title>Add note</title>
     <link rel="stylesheet" href="{% static 'form_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'add_note_styles.css' %}">
     <script type="text/javascript">
         $(document).ready(function() {
             $('#insert_from_last_date').click(function (e) {
@@ -26,7 +27,6 @@
     </script>
 {% endblock %}
 {% block main %}
-    <h1>Add new note</h1>
     <form method="post" action="{% url 'history:add_note' %}">
             {% csrf_token %}
 
