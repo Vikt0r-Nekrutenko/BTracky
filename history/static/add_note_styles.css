@@ -1,0 +1,7 @@
+#content ul {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: left;
+/*     width: 100%; */
+}
