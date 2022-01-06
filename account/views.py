@@ -1,30 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django import forms
-from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_protect
-
 from account.models import Profile
+from .forms import UserRegistrationForm
 
 
-class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    repeat_password = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
-
-    class Meta:
-        model = User
-        fields = ['username']
-
-    def clean_repeat_password(self):
-        cd = self.cleaned_data
-
-        if cd['password'] != cd['repeat_password']:
-            raise forms.ValidationError('Passwords don\'t match!')
-
-        return cd['repeat_password']
-
-
-@csrf_protect
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
