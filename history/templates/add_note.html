@@ -34,36 +34,31 @@
             <li>
                 <h2>{{ form.date.label }}</h2>
                 {{ form.date }}
-                <h5>current</h5>
-                <h3><input id="insert_from_last_date" type="button"/></h3>
+                <h5>current <input id="insert_from_last_date" type="button"/></h5>
             </li>
 
             <li>
                 <h2>{{ form.earn.label }}</h2>
                 {{ form.earn }}
-                <h5>last note has</h5>
-                <h3><input id="insert_from_last_earn" type="button" value="{{ user.profile.get_last_earn }}"/></h3>
+                <h5>last note has <input id="insert_from_last_earn" type="button" value="{{ user.profile.get_last_earn }}"/></h5>
             </li>
 
             <li>
                 <h2>{{ form.bank.label }}</h2>
                 {{ form.bank }}
-                <h5>last note has</h5>
-                <h3><input id="insert_from_last_bank" type="button" value="{{ user.profile.get_last_bank }}"/></h3>
+                <h5>last note has <input id="insert_from_last_bank" type="button" value="{{ user.profile.get_last_bank }}"/></h5>
             </li>
 
             <li>
                 <h2>{{ form.deposit.label }}</h2>
                 {{ form.deposit }}
-                <h5>last note has</h5>
-                <h3><input id="insert_from_last_deposit" type="button" value="{{ user.profile.get_last_depo }}"/></h3>
+                <h5>last note has <input id="insert_from_last_deposit" type="button" value="{{ user.profile.get_last_depo }}"/></h5>
             </li>
 
             <li>
                 <h2>{{ form.comment.label }}</h2>
                 {{ form.comment }}
-                <h5>last note has</h5>
-                <h3><input id="insert_from_last_comment" type="button" value="{{ user.profile.get_last_comment }}"/></h3>
+                <h5>last note has <input id="insert_from_last_comment" type="button" value="{{ user.profile.get_last_comment }}"/></h5>
             </li>
 
             <li><input type="submit" value="Add Note" /></li>
